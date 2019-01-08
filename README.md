@@ -70,14 +70,26 @@ Describe the command here
 
 ```
 USAGE
-  $ aws-pinpoint delete
+  $ aws-pinpoint delete --profile <admin-account-profile> \
+                        --roleARN <arn-of-role-to-assume> \
+                        --appId <pinpoint-app-id> \
+                        --region <aws-region-name>
 
 OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
+  --profile=profile  The name of the saved AWS profile to use for credentials.
+                     this is intended to be the organizational, 
+                     or admin, account.
+                     
+  --roleARN=roleARN  the Amazon Resource Name (ARN) of the role to assume when 
+                     creating the Pinpoint project. for cross account access,
+                     this should be an admin privileged role for an account 
+                     within your AWS Organization.
+  
+  --appId=appId      the id of the AWS Pinpoint app or project that 
+                     will be deleted.
+                     
+  --region=region.   the name of the region within which the AWS Pinpoint app
+                     or project will be deleted.
 ```
 
 _See code: [src/commands/delete.js](https://github.com/aws-utilities/aws-pinpoint/blob/v0.0.0/src/commands/delete.js)_
@@ -88,14 +100,30 @@ Describe the command here
 
 ```
 USAGE
-  $ aws-pinpoint update
+  $ aws-pinpoint update --profile <admin-account-profile> \
+                        --roleARN <arn-of-role-to-assume> \
+                        --appName <pinpoint-app-name> \
+                        --appId <pinpoint-app-id> \
+                        --region <aws-region-name>
 
 OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
+  --profile=profile  The name of the saved AWS profile to use for credentials.
+                     this is intended to be the organizational, 
+                     or admin, account.
+                     
+  --roleARN=roleARN  the Amazon Resource Name (ARN) of the role to assume when 
+                     creating the Pinpoint project. for cross account access,
+                     this should be an admin privileged role for an account 
+                     within your AWS Organization.
+  
+  --appId=appId      the id of the AWS Pinpoint app or project that 
+                     will be updated.
+                     
+  --appName=appName  the name of the AWS Pinpoint app or project that 
+                     will be updated.
+                     
+  --region=region.   the name of the region within which the AWS Pinpoint app
+                     or project will be updated.
 ```
 
 _See code: [src/commands/update.js](https://github.com/aws-utilities/aws-pinpoint/blob/v0.0.0/src/commands/update.js)_

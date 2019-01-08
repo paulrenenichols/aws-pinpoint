@@ -15,7 +15,10 @@ class UpdateCommand extends Command {
   }
 }
 
-UpdateCommand.description = `Update AWS Pinpoint App
+UpdateCommand.description = `
+...
+Updates an AWS Pinpoint app by deleting
+the current instance and creating a new one.
 `
 
 UpdateCommand.flags = {

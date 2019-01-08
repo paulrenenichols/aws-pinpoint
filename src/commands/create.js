@@ -15,11 +15,13 @@ class CreateCommand extends Command {
   }
 }
 
-CreateCommand.description = `Creates an AWS Pinpoint app`;
+CreateCommand.description = `
+...
+Creates AWS Pinpoint App
+`;
 
 CreateCommand.flags = {
   profile: flags.string({
-    char: 'p',
     description: 'aws named profile',
     required: true,
   }),
@@ -28,12 +30,10 @@ CreateCommand.flags = {
     required: true,
   }),
   appName: flags.string({
-    char: 'a',
     description: 'name of pinpoint app to be created',
     required: true,
   }),
   region: flags.string({
-    char: 'r',
     description: 'aws region in which this pinpoint app will be created',
     required: true,
   }),

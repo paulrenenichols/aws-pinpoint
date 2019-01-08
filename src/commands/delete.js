@@ -15,13 +15,13 @@ class DeleteCommand extends Command {
   }
 }
 
-DeleteCommand.description = `Deletes an AWS Pinpoint app
+DeleteCommand.description = `
 ...
+Deletes AWS Pinpoint App
 `
 
 DeleteCommand.flags = {
   profile: flags.string({
-    char: 'p',
     description: 'aws named profile',
     required: true,
   }),
@@ -30,12 +30,10 @@ DeleteCommand.flags = {
     required: true,
   }),
   appId: flags.string({
-    char: 'a',
     description: 'id of pinpoint app to be deleted',
     required: true,
   }),
   region: flags.string({
-    char: 'r',
     description: 'aws region where the pinpoint app to be deleted resides',
     required: true,
   }),
