@@ -5,7 +5,7 @@ const commandDebug = require('debug')('pinpoint:src:commands:create');
 
 class CreateCommand extends Command {
   async run() {
-    commandDebug('run()');
+    commandDebug('CreateCommand run()');
     const { flags } = this.parse(CreateCommand);
     const { profile, appName, region, roleARN } = flags;
     const pinpointAPI = await configurePinpointAPI(profile, roleARN);
@@ -15,9 +15,7 @@ class CreateCommand extends Command {
   }
 }
 
-CreateCommand.description = `create an AWS Pinpoint app
-...
-`
+CreateCommand.description = `Creates an AWS Pinpoint app`;
 
 CreateCommand.flags = {
   profile: flags.string({

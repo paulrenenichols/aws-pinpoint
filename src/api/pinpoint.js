@@ -45,8 +45,19 @@ async function configurePinpointAPI(profile, roleARN) {
     return pinpoint.createApp(params).promise();
   }
 
+  function deletePinpointApp(pinpointAppId, region) {
+    apiDebug('deletePinpointApp()');
+    const pinpoint = new AWS.Pinpoint({ apiVersion: '2016-12-01', region });
+    let responseData = {};
+    const params = {
+        ApplicationId: pinpointAppId,
+    };
+    return pinpoint.deleteApp(params).promise();
+  }
+
   return {
     createPinpointApp,
+    deletePinpointApp,
   };
 }
 
