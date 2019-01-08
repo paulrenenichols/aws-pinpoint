@@ -30,20 +30,22 @@ USAGE
 <!-- commands -->
 * [`aws-pinpoint create`](#aws-pinpoint-create)
 * [`aws-pinpoint delete`](#aws-pinpoint-delete)
-* [`aws-pinpoint hello`](#aws-pinpoint-hello)
-* [`aws-pinpoint help [COMMAND]`](#aws-pinpoint-help-command)
 * [`aws-pinpoint update`](#aws-pinpoint-update)
+* [`aws-pinpoint help [COMMAND]`](#aws-pinpoint-help-command)
 
 ## `aws-pinpoint create`
 
-Describe the command here
+Create an AWS Pinpoint project.
 
 ```
 USAGE
-  $ aws-pinpoint create
+  $ aws-pinpoint create --profile <admin-account-profile> --roleARN <arn-of-role-to-assume> --appName <pinpoint-app-name> --region <aws-region-name>
 
 OPTIONS
-  -n, --name=name  name to print
+  --profile=profile  name of the saved AWS profile to use for credentials. this is intended to be the organizational, or admin, account.
+  --roleARN=roleARN  the Amazon Resource Name (ARN) of the role to assume when creating the Pinpoint project. for cross account access, this should be an admin privileged role for an account within your AWS Organization.
+  --appName=appName  the name of the AWS Pinpoint app or project that will be created.
+  --region=region  the name of the region within which the AWS Pinpoint app or project will be created.
 
 DESCRIPTION
   ...
@@ -70,13 +72,13 @@ DESCRIPTION
 
 _See code: [src/commands/delete.js](https://github.com/aws-utilities/aws-pinpoint/blob/v0.0.0/src/commands/delete.js)_
 
-## `aws-pinpoint hello`
+## `aws-pinpoint update`
 
 Describe the command here
 
 ```
 USAGE
-  $ aws-pinpoint hello
+  $ aws-pinpoint update
 
 OPTIONS
   -n, --name=name  name to print
@@ -86,7 +88,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/hello.js](https://github.com/aws-utilities/aws-pinpoint/blob/v0.0.0/src/commands/hello.js)_
+_See code: [src/commands/update.js](https://github.com/aws-utilities/aws-pinpoint/blob/v0.0.0/src/commands/update.js)_
 
 ## `aws-pinpoint help [COMMAND]`
 
@@ -105,21 +107,4 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.1.4/src/commands/help.ts)_
 
-## `aws-pinpoint update`
-
-Describe the command here
-
-```
-USAGE
-  $ aws-pinpoint update
-
-OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
-```
-
-_See code: [src/commands/update.js](https://github.com/aws-utilities/aws-pinpoint/blob/v0.0.0/src/commands/update.js)_
 <!-- commandsstop -->
