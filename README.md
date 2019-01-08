@@ -39,17 +39,27 @@ Create an AWS Pinpoint project.
 
 ```
 USAGE
-  $ aws-pinpoint create --profile <admin-account-profile> --roleARN <arn-of-role-to-assume> --appName <pinpoint-app-name> --region <aws-region-name>
+  $ aws-pinpoint create --profile <admin-account-profile> \
+                        --roleARN <arn-of-role-to-assume> \
+                        --appName <pinpoint-app-name> \
+                        --region <aws-region-name>
 
 OPTIONS
-  --profile=profile  name of the saved AWS profile to use for credentials. this is intended to be the organizational, or admin, account.
-  --roleARN=roleARN  the Amazon Resource Name (ARN) of the role to assume when creating the Pinpoint project. for cross account access, this should be an admin privileged role for an account within your AWS Organization.
-  --appName=appName  the name of the AWS Pinpoint app or project that will be created.
-  --region=region  the name of the region within which the AWS Pinpoint app or project will be created.
+  --profile=profile  The name of the saved AWS profile to use for credentials.
+                     this is intended to be the organizational, 
+                     or admin, account.
+                     
+  --roleARN=roleARN  the Amazon Resource Name (ARN) of the role to assume when 
+                     creating the Pinpoint project. for cross account access,
+                     this should be an admin privileged role for an account 
+                     within your AWS Organization.
+  
+  --appName=appName  the name of the AWS Pinpoint app or project that 
+                     will be created.
+                     
+  --region=region.   the name of the region within which the AWS Pinpoint app
+                     or project will be created.
 
-DESCRIPTION
-  ...
-  Extra documentation goes here
 ```
 
 _See code: [src/commands/create.js](https://github.com/aws-utilities/aws-pinpoint/blob/v0.0.0/src/commands/create.js)_
