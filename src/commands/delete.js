@@ -1,7 +1,7 @@
 const {Command, flags} = require('@oclif/command')
 const { configurePinpointAPI } = require('../api/pinpoint');
 
-const commandDebug = require('debug')('pinpoint:src:commands:create');
+const commandDebug = require('debug')('pinpoint:src:commands:delete');
 
 class DeleteCommand extends Command {
   async run() {
