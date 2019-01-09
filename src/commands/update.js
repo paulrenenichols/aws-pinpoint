@@ -8,8 +8,8 @@ class UpdateCommand extends Command {
     commandDebug('UpdateCommand run()');
     const {flags} = this.parse(UpdateCommand)
     const { profile, appName, appId, region, roleARN } = flags;
-    const pinpointAPI = await configurePinpointAPI(profile, roleARN);
-    const updatePinpointAppResult = await pinpointAPI.updatePinpointApp(appId, appName, region);
+    const pinpointAPI = await configurePinpointAPI(profile, roleARN, region);
+    const updatePinpointAppResult = await pinpointAPI.updatePinpointApp(appId, appName);
     this.log(JSON.stringify(updatePinpointAppResult, null, 2));
     this.exit();
   }

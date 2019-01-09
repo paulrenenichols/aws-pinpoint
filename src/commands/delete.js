@@ -8,8 +8,8 @@ class DeleteCommand extends Command {
     commandDebug('DeleteCommand run()');
     const {flags} = this.parse(DeleteCommand)
     const { profile, appId, region, roleARN } = flags;
-    const pinpointAPI = await configurePinpointAPI(profile, roleARN);
-    const deletePinpointAppResult = await pinpointAPI.deletePinpointApp(appId, region);
+    const pinpointAPI = await configurePinpointAPI(profile, roleARN, region);
+    const deletePinpointAppResult = await pinpointAPI.deletePinpointApp(appId);
     this.log(JSON.stringify(deletePinpointAppResult, null, 2));
     this.exit();
   }

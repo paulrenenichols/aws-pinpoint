@@ -23,7 +23,15 @@ function assumeRole(roleARN) {
   });
 }
 
-async function configurePinpointAPI(profile, roleARN) {
+function changeRegion(region) {
+  apiDebug('changeRegion()');
+
+  return AWS.config.update({
+    region,
+  });
+}
+
+async function configurePinpointAPI(profile, roleARN, region) {
   apiDebug('configurePinpointAPI()');
 
   const credentials = new AWS.SharedIniFileCredentials({ profile });
@@ -33,10 +41,13 @@ async function configurePinpointAPI(profile, roleARN) {
     await assumeRole(roleARN);
   }
 
-  function createPinpointApp(pinpointAppName, region) {
+  if (region) {
+    changeRegion(region);
+  }
+
+  function createPinpointApp(pinpointAppName) {
     apiDebug('createPinpointApp()');
-    const pinpoint = new AWS.Pinpoint({ apiVersion: '2016-12-01', region });
-    let responseData = {};
+    const pinpoint = new AWS.Pinpoint({ apiVersion: '2016-12-01' });
     const createParams = {
         CreateApplicationRequest: {
             Name: pinpointAppName
@@ -45,20 +56,18 @@ async function configurePinpointAPI(profile, roleARN) {
     return pinpoint.createApp(createParams).promise();
   }
 
-  function deletePinpointApp(pinpointAppId, region) {
+  function deletePinpointApp(pinpointAppId) {
     apiDebug('deletePinpointApp()');
-    const pinpoint = new AWS.Pinpoint({ apiVersion: '2016-12-01', region });
-    let responseData = {};
+    const pinpoint = new AWS.Pinpoint({ apiVersion: '2016-12-01' });
     const deleteParams = {
         ApplicationId: pinpointAppId,
     };
     return pinpoint.deleteApp(deleteParams).promise();
   }
 
-  function updatePinpointApp(pinpointAppId, pinpointAppName, region) {
+  function updatePinpointApp(pinpointAppId, pinpointAppName) {
     apiDebug('updatePinpointApp()');
-    const pinpoint = new AWS.Pinpoint({ apiVersion: '2016-12-01', region });
-    let responseData = {};
+    const pinpoint = new AWS.Pinpoint({ apiVersion: '2016-12-01' });
     const deleteParams = {
         ApplicationId: pinpointAppId,
     };

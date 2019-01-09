@@ -8,8 +8,8 @@ class CreateCommand extends Command {
     commandDebug('CreateCommand run()');
     const { flags } = this.parse(CreateCommand);
     const { profile, appName, region, roleARN } = flags;
-    const pinpointAPI = await configurePinpointAPI(profile, roleARN);
-    const createPinpointAppResult = await pinpointAPI.createPinpointApp(appName, region);
+    const pinpointAPI = await configurePinpointAPI(profile, roleARN, region);
+    const createPinpointAppResult = await pinpointAPI.createPinpointApp(appName);
     this.log(JSON.stringify(createPinpointAppResult, null, 2));
     this.exit();
   }
